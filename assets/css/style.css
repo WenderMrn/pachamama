@@ -116,8 +116,9 @@ body{
 	top: 30px;
 }
 
+/* Sobre */
 #sobre-pais-bandeira{
-	width: 100%;
+	width: 80%;
 	box-shadow: 2px 2px 2px 1px #CCC;
 }
 
@@ -128,4 +129,24 @@ body{
   color: #FFF;
   margin: 8px;
 }
+
+/*Avaliação */
+#avaliacao-pais-bandeira {
+  width: 20%;
+  box-shadow: 2px 2px 2px 1px #CCC;
+}
+
+.avaliacao-label{
+	font-size: 0.8em;
+}
+
+#avaliador-comentario{
+	width: 90%;
+}
+
+.paises-checkbox{
+	color: #f13404;
+  text-shadow: 1px 1px rgba(51, 51, 51, 0.26);
+}
+
 

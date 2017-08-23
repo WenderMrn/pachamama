@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PACHAMAMA</title>
+  <!-- CSS app-->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="assets/css/carousel.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
+  <!-- Optional theme -->
+  <!--<link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">-->
+  <!-- JQuery -->
+  <script src="assets/lib/jquery/dist/jquery.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script type="text/javascript" src="assets/lib/bootstrap/dist/js/bootstrap.js" ></script>
+  <script type="text/javascript" src="assets/js/jquery.maskedinput.min.js" ></script>
+  <script type="text/javascript" src="assets/js/script.js"></script>
+
+</head>
+<body>
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html" id="home">
+        <!--<img alt="Home" src="#">-->
+        PACHAMAMA
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row padding">
+    <h3 class="text-center">Deixe sua avaliação, conte-nos um pouco da sua experiência.</h3>
+  </div>  
+  <div class="row padding">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-4">
+          <p class="avaliacao-label text-muted">País Avaliado</p>  
+          <h5 id="avaliacao-pais-nome"></h5>
+        </div>
+         <div class="col-md-2">
+          <p class="avaliacao-label text-muted">Nota</p>  
+          <select class="form-control" id="avaliador-nota">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+      </div>
+      <div class="row">
+        <img id="avaliacao-pais-bandeira" src="..." alt="..." class="img-rounded">
+      </div>
+      <div class="row" style="margin-top:10px">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="avaliador-nome">Avaliador(a)</label>
+                <input type="text" class="form-control" id="avaliador-nome" placeholder="Nome">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="avaliador-idade">Idade</label>
+                <input type="number" class="form-control" id="avaliador-idade" placeholder="Idade">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="avaliador-idade">Data</label>
+                <div><span>24/08/2017</span></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="avaliador-nome">País de Origem</label>
+                <input type="text" class="form-control" id="avaliador-nome" placeholder="País de Origem">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="avaliador-genero">Gênero</label>
+                <input type="text" class="form-control" id="avaliador-genero" placeholder="Gênero">
+              </div>
+            </div>
+            <div class="row" style="padding: 17px;">
+              <label for="avaliador-comentario">Comentário</label>
+              <textarea class="col-md-12" name="avaliador-comentario" id="avaliador-comentario" rows="5"></textarea> 
+            </div>
+            <button type="submit" class="btn btn-danger">Salvar</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row text-center">
+        <h3>Quais países gostaria de visitar?</h3>
+      </div>
+      <div class="row padding text-center">
+        <p id="avaliacao-paises-que-gostaria-de-vistar"></p>
+      </div>
+      <div class="row text-center">
+        <h3>Quais paises já visitou?</h3>
+      </div>
+      <div class="row padding text-center" id="avaliacao-paises-que-visitou">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!--Modal-->
+</div>  
+</body>
+<script>
+  
+  $.getJSON("assets/js/paises.json", function(data) {
+    var paises = data.paises;
+    for( n in paises){
+      if(paises[n].id == $.urlParam('pais')){
+        $("#avaliacao-pais-nome").html(paises[n].nome);
+        $("#avaliacao-pais-bandeira").attr("src",paises[n].bandeira);
+        break;
+      }
+    }
+
+    for(n in paises){
+      $("#avaliacao-paises-que-gostaria-de-vistar").append("<label class='checkbox-inline col paises-checkbox'><input type='checkbox' id='avaliacao-checkbox"+paises[n].id+"' value='"+paises[n].id+"'>"+paises[n].nome+"</label>");
+
+      $("#avaliacao-paises-que-visitou").append("<label class='checkbox-inline col paises-checkbox'><input type='checkbox' id='avaliacao-checkbox"+paises[n].id+"' value='"+paises[n].id+"'>"+paises[n].nome+"</label>");    
+    }
+
+  });
+</script>
+</html>
