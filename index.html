@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PACHAMAMA</title>
+  <!-- CSS app-->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="assets/css/carousel.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
+  <!-- Optional theme -->
+  <!--<link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">-->
+  <!-- JQuery -->
+  <script src="assets/lib/jquery/dist/jquery.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script type="text/javascript" src="assets/lib/bootstrap/dist/js/bootstrap.js" ></script>
+  <script type="text/javascript" src="assets/js/jquery.maskedinput.min.js" ></script>
+  <script type="text/javascript" src="assets/js/script.js"></script>
+
+</head>
+<body>
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html" id="home">
+        <!--<img alt="Home" src="#">-->
+        PACHAMAMA
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">Saiba um pouco mais sobre os países da America Latina e avalie os quais já visitou</h1>
+  </div>
+  <div id="capas-content" class="row"></div>
+</div>
+</form>
+<!--Modal-->
+</div>  
+</body>
+<script>
+  $.getJSON("assets/js/paises.json", function(data) {
+    var paises = data.paises;
+    for( n in paises){
+      $("#capas-content").append(
+          $("<div id='cd-"+""+"' class='col-xs-6 col-md-4'>"+
+            "<div class='pais panel panel-default pais-bg' style=\"background-image: url('"+paises[n].bandeira+"');\">"+
+            "<h1 class='nome-pais'>"+paises[n].nome+"</h1>"+
+          "<div class='panel-body'>"+
+          "<div class='btn-blur'></div>"+
+          "<div class='row'>"+
+          "<div class='col-md-3'><a href='sobre.html?pais="+paises[n].id+"' class='btn btn-warning btn-pais-outline btn-sm' onclick='OpenEditModal("+""+")'>Sobre</a></div>"+
+          "<div class='col-md-3'><button type='button' onclick='excluirCD("+""+")' class='btn btn-warning btn-pais-outline btn-sm'>Avaliar</button></div>"+
+          "</div>"+
+          "</div></div></div>")); 
+    }
+  })
+  .done(function(done) {
+    console.log( "second success",done);
+  })
+  .fail(function(fail) {
+    console.log( "error", fail);
+  })
+  .always(function(complete) {
+    console.log( "complete", complete);
+  });
+</script>
+</html>

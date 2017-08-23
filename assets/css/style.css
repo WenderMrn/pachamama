@@ -1,0 +1,131 @@
+html,body{
+	padding:0px;
+	margin:0px;
+}
+body{
+	padding-top: 70px;
+}
+
+.padding{
+	padding: 15px;
+}
+
+.navbar-inverse {
+    background-color: #ff704d !important;
+    border-color: #ff704d !important;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFF !important;
+}
+
+.blur {
+	background: url('https://images.unsplash.com/photo-1486723312829-f32b4a25211b?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') no-repeat center center fixed;
+	background-size: cover;
+	overflow: hidden;
+	filter: blur(13px);
+	position: absolute;
+	height: 300px;
+	top: -50px;
+	left: -50px;
+	right: -50px;
+	bottom: -50px;
+}
+
+.widget {
+	border-top: 2px solid rgba(255, 255, 255, .5);
+	border-bottom: 2px solid rgba(255, 255, 255, .5);
+	height: 200px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.center {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+#panel-login{
+	margin-top: 25%;
+}
+.panel-primary > .panel-heading{
+	color:#FFF !important;
+	background: #5cb85c !important;
+	background-color: #5cb85c !important;
+}
+.panel-primary ,.panel-heading{
+	color:#FFF !important;
+	background: #5cb85c !important;
+	border-color: #5cb85c !important;
+}
+
+.pais img{
+	height: 200px;
+	display: block;
+	margin: auto;
+}
+.pais{
+	padding-top: 5%;
+	box-shadow: 1px 2px 10px #888888;
+	height: 200px;
+}
+
+#campo_busca{
+	margin: 5%;
+}
+#campo_busca #fild_busca{
+	font-size: 2em;
+	height: 50px;
+}
+
+.pais-bg{
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.btn-pais-outline{
+	background: transparent !important;	
+	color:#FFF !important;
+	text-shadow: 1px 1px #717171 !important;
+	border-color: #f7f5f3 !important;
+}
+
+.pais .panel-body{
+	margin-top: 80px !important;
+}
+
+.pais .nome-pais{
+	margin-left: 10px;
+	margin-top: -10px;
+	color: #FFF;
+	text-shadow: 3px 1px 3px rgb(113, 113, 113);
+}
+
+.btn-blur{
+	background-color: #5f5d5d;
+	background-size: cover;
+	overflow: hidden;
+	filter: blur(20px);
+	position: relative;
+	height: 20px;
+	top: 30px;
+}
+
+#sobre-pais-bandeira{
+	width: 100%;
+	box-shadow: 2px 2px 2px 1px #CCC;
+}
+
+.sobre-pais-comida-tipica{
+	background-color: #ff704d;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #FFF;
+  margin: 8px;
+}
+
