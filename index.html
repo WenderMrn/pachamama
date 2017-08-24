@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt"
+prefix="schema:http://schema.org/
+ foaf:http://xmlns.com/foaf/0.1/
+ food:http://data.lirmm.fr/ontologies/">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PACHAMAMA</title>
+  <title property="schema:title">PACHAMAMA</title>
+  <meta property="schema:creator" content="Rafael Figuêiredo e Wender Mariano" />
+  <meta property="schema:description" content="Catálogo de Países da América Latina" />
+  <meta property="schema:WebSite" content="http://pachamama.com.br/">
+  <link rel="foaf:topic"
+href="http://pachamama.com.br/" />
   <!-- CSS app-->
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Latest compiled and minified CSS -->
@@ -44,9 +52,9 @@
 </nav>
 <div class="container">
   <div class="row">
-    <h1 class="text-center">Saiba um pouco mais sobre os países da America Latina e avalie os quais já visitou</h1>
+    <h1 class="text-center">Saiba um pouco mais sobre os países da América Latina e avalie os quais já visitou</h1>
   </div>
-  <div id="capas-content" class="row"></div>
+  <div id="paises-content" class="row"></div>
 </div>
 </form>
 <!--Modal-->
@@ -56,14 +64,14 @@
   $.getJSON("assets/js/paises.json", function(data) {
     var paises = data.paises;
     for( n in paises){
-      $("#capas-content").append(
-          $("<div id='cd-"+""+"' class='col-xs-6 col-md-4'>"+
-            "<div class='pais panel panel-default pais-bg' style=\"background-image: url('"+paises[n].bandeira+"');\">"+
-            "<h1 class='nome-pais'>"+paises[n].nome+"</h1>"+
+      $("#paises-content").append(
+          $("<div id='pais-"+""+"' class='col-xs-6 col-md-4'  typeof='schema:Country' resource='#country-"+paises[n].nome+"'>"+
+            "<div property='schema:logo' href='"+paises[n].bandeira+"' class='pais panel panel-default pais-bg' style=\"background-image: url('"+paises[n].bandeira+"');\">"+
+            "<h1 property='schema:name' class='nome-pais'>"+paises[n].nome+"</h1>"+
           "<div class='panel-body'>"+
           "<div class='btn-blur'></div>"+
           "<div class='row'>"+
-          "<div class='col-md-3'><a href='sobre.html?pais="+paises[n].id+"' class='btn btn-warning btn-pais-outline btn-sm' onclick='OpenEditModal("+""+")'>Sobre</a></div>"+
+          "<div class='col-md-3'><a property='schema:url' resource='sobre.html?pais="+paises[n].id+"' href='sobre.html?pais="+paises[n].id+"' class='btn btn-warning btn-pais-outline btn-sm'>Sobre</a></div>"+
           "<div class='col-md-3'><a href='avaliacao.html?pais="+paises[n].id+"' class='btn btn-warning btn-pais-outline btn-sm'>Avaliar</a></div>"+
           "</div>"+
           "</div></div></div>")); 

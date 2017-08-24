@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt"
+prefix="schema:http://schema.org/
+ foaf:http://xmlns.com/foaf/0.1/
+ food:http://data.lirmm.fr/ontologies/">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PACHAMAMA</title>
+  <title property="schema:title">PACHAMAMA</title>
+  <meta property="schema:creator" content="Rafael Figuêiredo e Wender Mariano" />
+  <meta property="schema:description" content="Catálogo de Países da América Latina" />
+  <meta property="schema:WebSite" content="http://pachamama.com.br/">
+  <link rel="foaf:topic"
+href="http://pachamama.com.br/" />
   <!-- CSS app-->
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Latest compiled and minified CSS -->
@@ -23,7 +31,6 @@
   <script type="text/javascript" src="assets/lib/bootstrap/dist/js/bootstrap.js" ></script>
   <script type="text/javascript" src="assets/js/jquery.maskedinput.min.js" ></script>
   <script type="text/javascript" src="assets/js/script.js"></script>
-
 </head>
 <body>
  <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -43,17 +50,21 @@
   </div>
 </nav>
 <div class="container">
-  <div class="row">
+  <div class="row" typeOf="schema:Country" resource="#country">
     <div class="col-md-6">
       <div class="row">
-        <h1 id="sobre-pais-nome"></h1>
+        <h1 id="sobre-pais-nome" property="schema:name"></h1>
       </div>
       <div class="row">
-        <img id="sobre-pais-bandeira" src="..." alt="..." class="img-rounded">
+        <img id="sobre-pais-bandeira" property="schema:url" src="..." alt="..." class="img-rounded">
       </div>
       <div class="row" style="margin-top:10px">
+        <div class="col-md-4"><h4 class="text-left">Capital</h4></div>
+        <div class="col-md-6" property="schema:State"><h4 class="text-right" id="sobre-pais-capital" property="schema:name"></h4></div>
+      </div>
+      <div class="row">
         <div class="col-md-4"><h4 class="text-left">Área</h4></div>
-        <div class="col-md-6"><h4 class="text-right" id="sobre-pais-area"></h4></div>
+        <div class="col-md-6"><h4 class="text-right" id="sobre-pais-area" property="schema:floorSize"></h4></div>
       </div>
       <div class="row">
         <div class="col-md-4"><h4 class="text-left">População</h4></div>
@@ -61,20 +72,20 @@
       </div>
       <div class="row">
         <div class="col-md-4"><h4 class="text-left">Moeda</h4></div>
-        <div class="col-md-6"><h4 class="text-right" id="sobre-pais-moeda"></h4></div>
+        <div class="col-md-6"><h4 class="text-right" id="sobre-pais-moeda"  property="schema:currency"></h4></div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" resource="#country">
       <div class="row text-center">
         <h3>Curiosidades</h3>
       </div>
       <div class="row padding">
-        <p id="sobre-pais-curiosidade"></p>
+        <p id="sobre-pais-curiosidade" property="foaf:topic_interest"></p>
       </div>
-      <div class="row text-center">
+      <div class="row text-center" resource="#country">
         <h3>Comidas Típicas</h3>
       </div>
-      <div class="row padding" id="sobre-pais-comidas-tipicas">
+      <div class="row padding" id="sobre-pais-comidas-tipicas" typeOf='food:food'>
       </div>
     </div>
   </div>
@@ -96,8 +107,9 @@
         $("#sobre-pais-populacao").html(paises[n].populacao);
         $("#sobre-pais-moeda").html(paises[n].moeda);
         $("#sobre-pais-curiosidade").html(paises[n].curiosidades);
+        $("#sobre-pais-capital").html(paises[n].capital);
         for(c in paises[n].comidas_tipicas){
-          $("#sobre-pais-comidas-tipicas").append("<span class='sobre-pais-comida-tipica'>"+paises[n].comidas_tipicas[c]+"<span/>");
+          $("#sobre-pais-comidas-tipicas").append("<span class='sobre-pais-comida-tipica' typeOf='food:food' inlist='' content='"+paises[n].comidas_tipicas[c]+"'>"+paises[n].comidas_tipicas[c]+"<span/>");
           console.log(paises[n].comidas_tipicas[c]);
         }
         break;
