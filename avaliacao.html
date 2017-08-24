@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt"
+prefix="schema:http://schema.org/
+ foaf:http://xmlns.com/foaf/0.1/
+ food:http://data.lirmm.fr/ontologies/">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PACHAMAMA</title>
+  <title property="schema:title">PACHAMAMA</title>
+  <meta property="schema:creator" content="Rafael Figuêiredo e Wender Mariano" />
+  <meta property="schema:description" content="Catálogo de Países da América Latina" />
+  <meta property="schema:WebSite" content="http://pachamama.com.br/">
+  <link rel="foaf:topic"
+href="http://pachamama.com.br/" />
   <!-- CSS app-->
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Latest compiled and minified CSS -->
@@ -42,20 +50,20 @@
     </div>
   </div>
 </nav>
-<div class="container">
+<div class="container" typeof="schema:Rating" resource="#rating">
   <div class="row padding">
     <h3 class="text-center">Deixe sua avaliação, conte-nos um pouco da sua experiência.</h3>
   </div>  
   <div class="row padding">
     <div class="col-md-8">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" property="schema:itemReviewed" typeof="schema:Country" resource="#country">
           <p class="avaliacao-label text-muted">País Avaliado</p>  
-          <h5 id="avaliacao-pais-nome"></h5>
+          <h5 id="avaliacao-pais-nome" property="schema:nome"></h5>
         </div>
-         <div class="col-md-2">
+         <div class="col-md-2" typeof="schema:Rating" resource="#rating">
           <p class="avaliacao-label text-muted">Nota</p>  
-          <select class="form-control" id="avaliador-nota">
+          <select class="form-control" id="avaliador-nota" property="schema:starRating">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -64,37 +72,37 @@
             </select>
           </div>
       </div>
-      <div class="row">
-        <img id="avaliacao-pais-bandeira" src="..." alt="..." class="img-rounded">
+      <div class="row" property="schema:itemReviewed" typeof="schema:Country" resource="#country">
+        <img id="avaliacao-pais-bandeira" property="schema:image" src="..." alt="..." class="img-rounded">
       </div>
-      <div class="row" style="margin-top:10px">
+      <div class="row" style="margin-top:10px" typeof="schema:Person" property="schema:author" resource="#author">
             <div class="row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6" >
                 <label for="avaliador-nome">Avaliador(a)</label>
-                <input type="text" class="form-control" id="avaliador-nome" placeholder="Nome">
+                <input type="text" class="form-control" id="avaliador-nome" placeholder="Nome" property="schema:nome">
               </div>
               <div class="form-group col-md-3">
                 <label for="avaliador-idade">Idade</label>
-                <input type="number" class="form-control" id="avaliador-idade" placeholder="Idade">
+                <input type="number" class="form-control" id="avaliador-idade" placeholder="Idade" property="schema:gender">
               </div>
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-3"  typeof="schema:Rating" resource="#rating">
                 <label for="avaliador-idade">Data</label>
-                <div><span>24/08/2017</span></div>
+                <div><span property="schema:datePublished">24/08/2017</span></div>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-md-6">
                 <label for="avaliador-nome">País de Origem</label>
-                <input type="text" class="form-control" id="avaliador-nome" placeholder="País de Origem">
+                <input type="text" class="form-control" id="avaliador-nome" placeholder="País de Origem" property="schema:nationality" typeof="shema:Country">
               </div>
               <div class="form-group col-md-3">
                 <label for="avaliador-genero">Gênero</label>
                 <input type="text" class="form-control" id="avaliador-genero" placeholder="Gênero">
               </div>
             </div>
-            <div class="row" style="padding: 17px;">
+            <div class="row" style="padding: 17px;"   typeof="schema:Rating" resource="#rating">
               <label for="avaliador-comentario">Comentário</label>
-              <textarea class="col-md-12" name="avaliador-comentario" id="avaliador-comentario" rows="5"></textarea> 
+              <textarea class="col-md-12" name="avaliador-comentario" id="avaliador-comentario" rows="5" property="schema:comment"></textarea> 
             </div>
             <button type="submit" class="btn btn-danger">Salvar</button>
       </div>
